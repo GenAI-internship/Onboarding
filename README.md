@@ -9,100 +9,102 @@ You’ll be working on a Retrieval-Augmented Generation (RAG) system with:
 
 ---
 
-## 🔁 Learning Roadmap (in Order of Usage)
+# **Onboarding Plan: 2-Week Intensive Learning → 6-Week Implementation**  
 
-### 1. 🔧 **Git & GitHub Basics**
-**Goal**: Understand version control and collaboration.
+This plan **front-loads learning** in the first two weeks, ensuring interns can **start integration early**.  
 
-- [Git Handbook by GitHub](https://guides.github.com/introduction/git-handbook/)
-- [Codecademy: Learn Git (Free)](https://www.codecademy.com/learn/learn-git)
-- [Oh My Git! Game (for fun)](https://ohmygit.org/)
+---  
 
----
+## **📌 Phase 1: Intensive Learning (Weeks 1-2)**  
+**Goal:** Cover all fundamentals needed to **start building immediately** in Week 3.  
 
-### 2. 🧱 **Python OOP Fundamentals**
-**Goal**: Write modular, scalable code using classes and objects.
+### **Week 1: Core Backend & AI Basics**  
+| **Day** | **Topic** | **Resources** | **Checkpoint Task** |  
+|---------|----------|--------------|---------------------|  
+| **1** | Python OOP Refresher | [FreeCodeCamp OOP](https://youtu.be/Ej_02ICOIgs) | Write a Python class for a "Document" (title, content, metadata) |  
+| **2** | Git & Collaboration | [Learn Git Branching](https://learngitbranching.js.org/) | Fork repo, make a PR with a small change |  
+| **3** | FastAPI Basics | [FastAPI Tutorial](https://fastapi.tiangolo.com/tutorial/) | Build a `/health` endpoint |  
+| **4** | FastAPI File Uploads | [FastAPI Upload Files](https://fastapi.tiangolo.com/tutorial/request-files/) | Make an endpoint that accepts PDFs |  
+| **5** | NLP Crash Course | [Hugging Face NLP](https://huggingface.co/course/chapter1) | Extract keywords from a sample text |  
 
-- [Python OOP – Real Python](https://realpython.com/python3-object-oriented-programming/)
-- [OOP in Python - Programiz](https://www.programiz.com/python-programming/object-oriented-programming)
-- [CS50’s Python Notes on OOP (short & clear)](https://cs50.harvard.edu/python/2022/notes/8/)
+### **Week 2: RAG Prerequisites**  
+| **Day** | **Topic** | **Resources** | **Checkpoint Task** |  
+|---------|----------|--------------|---------------------|  
+| **6** | Vector Databases | [Pinecone Guide](https://www.pinecone.io/learn/vector-database/) | Store 3 text chunks in FAISS |  
+| **7** | LangChain Basics | [LangChain Docs](https://python.langchain.com/docs/get_started) | Load a PDF and split into chunks |  
+| **8** | LangChain RAG | [RAG Tutorial](https://python.langchain.com/docs/use_cases/question_answering/) | Build Q&A over a PDF |  
+| **9** | LangGraph (Optional) | [LangGraph Docs](https://python.langchain.com/docs/langgraph) | Chain two LLM calls (e.g., summarize → answer) |  
+| **10** | Project Planning | — | Draft a system design doc |  
 
----
+---  
 
-### 3. ⚙️ **FastAPI**
-**Goal**: Build scalable backend APIs.
+## **📌 Phase 2: Implementation (Weeks 3-8)**  
+**Goal:** Build the RAG system incrementally with **weekly milestones**.  
 
-- [FastAPI Official Docs (start with the tutorial)](https://fastapi.tiangolo.com/tutorial/)
-- [FastAPI Crash Course – freeCodeCamp (YouTube)](https://www.youtube.com/watch?v=0sOvCWFmrtA)
-- [FastAPI + SQLite example repo](https://github.com/tiangolo/full-stack-fastapi-postgresql)
+### **Week 3: Setup & PDF Processing**  
+- **Objective:** Accept PDFs → Extract text → Store in DB.  
+- **Tasks:**  
+  - FastAPI endpoint for PDF upload.  
+  - Text extraction with PyPDF2/PDFMiner.  
+  - Store raw text in SQLite/PostgreSQL.  
 
----
+### **Week 4: Vector DB & Embeddings**  
+- **Objective:** Chunk text → Generate embeddings → Store in FAISS/Pinecone.  
+- **Tasks:**  
+  - Implement text splitting (LangChain `RecursiveTextSplitter`).  
+  - Generate embeddings (OpenAI, Hugging Face, or local model).  
+  - Set up vector DB.  
 
-### 4. 🧠 **AI Basics for RAG**
-**Goal**: Understand LLMs, embeddings, tokenization, vector search.
+### **Week 5: RAG Pipeline**  
+- **Objective:** User query → Retrieve chunks → Generate answer.  
+- **Tasks:**  
+  - Implement retrieval with LangChain.  
+  - Connect to LLM (OpenAI, Llama 2, etc.).  
+  - Simple `/query` endpoint.  
 
-- [Intro to LLMs (Cohere Learn)](https://learn.cohere.com/)
-- [OpenAI Cookbook – Embeddings, Token Usage](https://github.com/openai/openai-cookbook)
-- [Hugging Face Course (relevant parts)](https://huggingface.co/learn/nlp-course/chapter1)
+### **Week 6: Workflow & Optimization**  
+- **Objective:** Improve RAG with LangGraph (if needed).  
+- **Tasks:**  
+  - Add query rewriting (e.g., "Explain like I'm 5").  
+  - Cache frequent queries with Redis.  
 
----
+### **Week 7: Testing & Edge Cases**  
+- **Objective:** Handle errors (scanned PDFs, large files, etc.).  
+- **Tasks:**  
+  - Add OCR (Tesseract) for scanned PDFs.  
+  - Rate limiting + file size checks.  
 
-### 5. 📥 **PDF Parsing & Text Extraction**
-**Goal**: Process user-uploaded PDFs for embedding into vector DB.
+### **Week 8: Deployment & Docs**  
+- **Objective:** Dockerize + deploy + document.  
+- **Tasks:**  
+  - Docker + FastAPI (Uvicorn).  
+  - Write API docs (Swagger/Postman).  
+  - Present final demo.  
 
-- [pdfplumber (GitHub)](https://github.com/jsvine/pdfplumber)
-- [PyMuPDF (fitz) – Accurate & Fast](https://pymupdf.readthedocs.io/en/latest/)
+---  
 
----
+## **📌 Key Principles**  
+1. **First 2 Weeks = Full-Time Learning**  
+   - Daily check-ins to resolve blockers.  
+   - Focus on **applied tasks** (not just theory).  
 
-### 6. 🗃️ **Vector Databases**
-**Goal**: Store and retrieve embeddings for documents.
+2. **Weeks 3+ = Build in Sprints**  
+   - Weekly milestones (e.g., "By Friday, PDF upload works").  
+   - Prioritize **end-to-end flow** over perfection.  
 
-- [Introduction to Vector DBs (Pinecone Blog)](https://www.pinecone.io/learn/vector-database/)
-- [Chroma DB – Lightweight local DB](https://docs.trychroma.com/)
-- [FAISS – Facebook AI Similarity Search](https://github.com/facebookresearch/faiss)
+3. **Stretch Goals**  
+   - Auth (JWT), monitoring (Prometheus), async processing (Celery).  
 
----
+---  
 
-### 7. 🧠🔗 **RAG Architecture**
-**Goal**: Understand how retrieval + generation work together.
+### **🚀 Expected Outcomes**  
+- By **Week 3**: Working PDF upload API.  
+- By **Week 5**: Basic RAG (upload → query).  
+- By **Week 8**: Production-ready system.  
 
-- [RAG from First Principles – Sebastian Raschka](https://sebastianraschka.com/blog/2023/rag.html)
-- [LangChain Docs – RAG Concept](https://docs.langchain.com/docs/use-cases/question-answering/)
-- [LangChain RAG YouTube Tutorial (Data Independent)](https://www.youtube.com/watch?v=YIu5kZpLkJQ)
+Let’s ship this!  
 
----
-
-### 8. 🧪 **Testing and Debugging**
-**Goal**: Ensure reliability and stability of your APIs and modules.
-
-- [Pytest Quickstart – Real Python](https://realpython.com/pytest-python-testing/)
-- [FastAPI Testing Docs](https://fastapi.tiangolo.com/tutorial/testing/)
-
----
-
-### 9. 🗃️ **Database for Metadata**
-**Goal**: Store metadata like file info, user info, query logs, etc.
-
-- [SQLModel (by FastAPI creator)](https://sqlmodel.tiangolo.com/)
-- [SQLite Crash Course (YouTube)](https://www.youtube.com/watch?v=byHcYRpMgI4)
-
----
-
-### 10. 📦 **Packaging & Deployment Basics**
-**Goal**: Make your app production-ready.
-
-- [Deploy FastAPI with Uvicorn & Gunicorn](https://fastapi.tiangolo.com/deployment/)
-- [Dockerize FastAPI – FreeCodeCamp](https://www.youtube.com/watch?v=YpTmcCBBdTE)
-
----
-
-## ✅ Expected Setup & Tools
-- Python 3.10+
-- VS Code or PyCharm
-- Git + GitHub
-- FastAPI
-- SQLite or PostgreSQL
-- ChromaDB / FAISS
-- OpenAI / Hugging Face models
-- Docker (optional but recommended for later stages)
+---  
+**Mentor:** Sankalp Jain 
+**Start Date:** 07/04/2025 
+**Demo Day:** TBD
